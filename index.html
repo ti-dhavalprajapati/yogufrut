@@ -25,12 +25,19 @@
     <img style="width: 200px; height: 74px;" src="assets/logo.png"/>
   </div>
   <model-viewer id="model-viewer-id" ios-src="assets/models/Yogu All Anime Done.reality" src="assets/models/Leaf_All_Actions_Merged.glb"
-    autoplay camera-controls ar ar-modes="scene-viewer webxr quick-look">
-    <button slot="ar-button" style="background-color: white; border-radius: 4px; border: none; position: absolute; top: 16px; right: 16px; ">
+    autoplay camera-controls ar ar-modes="scene-viewer webxr quick-look" style="width: 100%;">
+    <button slot="ar-button" style="background-color: white; border-radius: 4px; border: none; position: absolute; top: 16px; right: 16px;">
       <!-- 👋 Activate AR -->
       <!-- <img src="assets/Button White.jpg"/> -->
       <img src="assets/Button PNG.png"/>
     </button>
+    <div style="display: flex; justify-content: center;">
+      <button style="background-color: white; border: none; bottom: 16px; position: absolute;">
+        <!-- 👋 Activate AR -->
+        <!-- <img src="assets/Button White.jpg"/> -->
+        <img src="assets/Button PNG.png"/>
+      </button>
+    </div>
     <img id="snowGIF" style="display: none;" src="assets/snow02.gif"/>
   </model-viewer>
   <script>
@@ -38,6 +45,8 @@
     const modelViewer = document.querySelector('#model-viewer-id');
     const snowGIF = document.getElementById('snowGIF');
     let isLoaded = false;
+
+    modelViewer.environmentImage = 'legacy';
 
     modelViewer.addEventListener('load', e => {
       isLoaded = true;
