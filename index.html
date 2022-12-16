@@ -12,7 +12,6 @@
       width: 400px;
       height: 600px;
       margin: 0 auto;
-      background-color: antiquewhite;
     }
 
     img {
@@ -21,66 +20,8 @@
   </style>
 </head>
 <body>
-
-  <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-    <img style="width: 200px; height: 74px;" src="assets/logo.png"/>
-  </div>
-
-  <img id="yoguLogoGIF" style="z-index: 1; position: absolute; width: 200px; height: 74px; margin-left: -50px; left: 50%;" src="assets/logo_gif.gif"/>
-
-  <model-viewer id="model-viewer-id" ios-src="assets/models/Yogu All Anime Done.reality" src="assets/models/Leaf_All_Actions_Merged.glb"
-    autoplay camera-controls ar style="width: 100%; height: 500px;" shadow-intensity="1" shadow-softness="1">
-    <!-- ar-modes="scene-viewer webxr quick-look" -->
-    <!-- <img id="yoguLogoGIF" style="z-index: 1; position: absolute; width: 200px; height: 74px; margin-left: -50px; left: 50%;" src="assets/logo_gif.gif"/> -->
-    <!-- <img id="snowGIF" style="z-index: 0; position: absolute;" src="assets/snow02.gif"/> -->
-
-    <button slot="ar-button" style="background-color: white; border: none; bottom: 16px; position: absolute; margin-left: -50px; left: 50%;">
-      <img src="assets/Button PNG.png"/>
-    </button>
-    
-    <!-- <button style="background-color: white; border: none; bottom: 16px; position: absolute; margin-left: -50px; left: 50%;">
-      <img src="assets/Button PNG.png"/>
-    </button> -->
-
+  <model-viewer src="assets/Leaf(Yogufrut).glb" camera-controls auto-rotate ar>
+    <img src="assets/snow02.gif"/>
   </model-viewer>
-  <script>
-
-    const modelViewer = document.querySelector('#model-viewer-id');
-    // const snowGIF = document.getElementById('snowGIF');
-    let isLoaded = false;
-
-    modelViewer.addEventListener('load', e => {
-      isLoaded = true;
-      console.log("model loaded");
-      console.log(modelViewer.availableAnimations);
-    }, { once: true });
-
-    self.setInterval(() => {
-      if (isLoaded) {
-        console.log(Math.floor(modelViewer.currentTime));
-
-        if (modelViewer.currentTime > 4.3) {
-          // snowGIF.style.display = "inline";
-
-          if (modelViewer.currentTime >= 18)
-          modelViewer.currentTime = 9.5;
-        }
-      }
-    }, 50);
-    
-  </script>
-
-  <!-- <model-viewer src="assets/Leaf_All_Actions_Merged.glb" ar ar-modes="scene-viewer webxr quick-look" camera-controls poster="poster.webp" shadow-intensity="1" autoplay>
-    <div class="progress-bar hide" slot="progress-bar">
-        <div class="update-bar"></div>
-    </div>
-    <button slot="ar-button" id="ar-button">
-        View in your space
-    </button>
-    <div id="ar-prompt">
-        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
-    </div>
-</model-viewer> -->
-
 </body>
 </html>
