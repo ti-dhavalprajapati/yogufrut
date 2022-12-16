@@ -26,13 +26,11 @@
     <img style="width: 200px; height: 74px;" src="assets/logo.png"/>
   </div>
 
-  <img id="yoguLogoGIF" style="z-index: 1; position: absolute; width: 200px; height: 74px; margin-left: -50px; left: 50%;" src="assets/logo_gif.gif"/>
-
   <model-viewer id="model-viewer-id" ios-src="assets/models/Yogu All Anime Done.reality" src="assets/models/Leaf_All_Actions_Merged.glb"
     ar-modes="webxr quick-look" autoplay camera-controls ar shadow-intensity="1" shadow-softness="1">
     
-    <!-- <img id="yoguLogoGIF" style="z-index: 1; position: absolute; width: 200px; height: 74px; margin-left: -50px; left: 50%;" src="assets/logo_gif.gif"/> -->
-    <!-- <img id="snowGIF" style="z-index: 0; position: absolute;" src="assets/snow02.gif"/> -->
+    <img id="yoguLogoGIF" style="z-index: 1; position: absolute; width: 200px; height: 74px; margin-left: -50px; left: 50%;" src="assets/logo_gif.gif"/>
+    <img id="snowGIF" style="z-index: 0; display: none; position: absolute; object-fit: cover;" src="assets/snow01.gif"/>
 
     <button slot="ar-button" style="background-color: white; border: none; bottom: 16px; position: absolute; margin-left: -50px; left: 50%;">
       <img src="assets/Button PNG.png"/>
@@ -46,7 +44,7 @@
   <script>
 
     const modelViewer = document.querySelector('#model-viewer-id');
-    // const snowGIF = document.getElementById('snowGIF');
+    const snowGIF = document.getElementById('snowGIF');
     let isLoaded = false;
 
     modelViewer.addEventListener('load', e => {
@@ -60,7 +58,7 @@
         console.log(Math.floor(modelViewer.currentTime));
 
         if (modelViewer.currentTime > 4.3) {
-          // snowGIF.style.display = "inline";
+          snowGIF.style.display = "inline";
 
           if (modelViewer.currentTime >= 18)
           modelViewer.currentTime = 9.5;
