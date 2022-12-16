@@ -24,12 +24,36 @@
   <div style="display: flex; justify-content: center; margin-bottom: 20px;">
     <img style="width: 200px; height: 74px;" src="assets/logo.png"/>
   </div>
-  <model-viewer ios-src="assets/models/Yogu All Anime Done.reality" src="assets/models/Leaf_All_Actions_Merged.glb" autoplay camera-controls ar ar-modes="scene-viewer webxr quick-look">
-    <img src="assets/snow02.gif"/>
+  <model-viewer id="model-viewer-id" ios-src="assets/models/Yogu All Anime Done.reality" src="assets/models/Leaf_All_Actions_Merged.glb"
+    autoplay camera-controls ar ar-modes="scene-viewer webxr quick-look">
+    <img id="snowGIF" style="display: none;" src="assets/snow02.gif"/>
   </model-viewer>
-  <div>
+  <script>
 
-  </div>
+    const modelViewer = document.querySelector('#model-viewer-id');
+    const snowGIF = document.getElementById('snowGIF');
+    let isLoaded = false;
+
+    modelViewer.addEventListener('load', e => {
+      isLoaded = true;
+      console.log("model loaded");
+      console.log(modelViewer.availableAnimations);
+    }, { once: true });
+
+    self.setInterval(() => {
+      if (isLoaded) {
+        console.log(Math.floor(modelViewer.currentTime));
+
+        if (modelViewer.currentTime > 4.3) {
+          snowGIF.style.display = "inline";
+
+          if (modelViewer.currentTime >= 18)
+          modelViewer.currentTime = 9.5;
+        }
+      }
+    }, 50);
+    
+  </script>
 
   <!-- <model-viewer src="assets/Leaf_All_Actions_Merged.glb" ar ar-modes="scene-viewer webxr quick-look" camera-controls poster="poster.webp" shadow-intensity="1" autoplay>
     <div class="progress-bar hide" slot="progress-bar">
@@ -42,7 +66,5 @@
         <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
     </div>
 </model-viewer> -->
-  
-  </script>
 </body>
 </html>
