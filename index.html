@@ -35,14 +35,14 @@
       <img src="assets/Button PNG.png"/>
     </button> -->
 
-    <img id="yoguLogoGIF" style="z-index: 0; position: absolute; width: 200px; height: 74px; margin-left: -50px; left: 50%;" src="assets/logo_gif.gif"/>
-    <img id="snowGIF" style="display: none; z-index: 1; position: absolute;" src="assets/snow02.gif"/>
+    <img id="yoguLogoGIF" style="z-index: 1; position: absolute; width: 200px; height: 74px; margin-left: -50px; left: 50%;" src="assets/logo_gif.gif"/>
+    <!-- <img id="snowGIF" style="z-index: 0; position: absolute;" src="assets/snow02.gif"/> -->
 
   </model-viewer>
   <script>
 
     const modelViewer = document.querySelector('#model-viewer-id');
-    const snowGIF = document.getElementById('snowGIF');
+    // const snowGIF = document.getElementById('snowGIF');
     let isLoaded = false;
 
     modelViewer.environmentImage = 'legacy';
@@ -58,7 +58,7 @@
         console.log(Math.floor(modelViewer.currentTime));
 
         if (modelViewer.currentTime > 4.3) {
-          snowGIF.style.display = "inline";
+          // snowGIF.style.display = "inline";
 
           if (modelViewer.currentTime >= 18)
           modelViewer.currentTime = 9.5;
