@@ -26,18 +26,18 @@
   </div>
   <model-viewer id="model-viewer-id" ios-src="assets/models/Yogu All Anime Done.reality" src="assets/models/Leaf_All_Actions_Merged.glb"
     autoplay camera-controls ar ar-modes="scene-viewer webxr quick-look" style="width: 100%; height: 500px;">
-    <button slot="ar-button" style="background-color: white; border-radius: 4px; border: none; position: absolute; top: 16px; right: 16px;">
-      <!-- 👋 Activate AR -->
-      <!-- <img src="assets/Button White.jpg"/> -->
-      <img src="assets/Button PNG.png"/>
-    </button>
     <div style="display: flex; justify-content: center;">
-      <button style="background-color: white; border: none; bottom: 16px; position: absolute;">
+      <button slot="ar-button" style="background-color: white; border: none; bottom: 16px; position: absolute;">
         <!-- 👋 Activate AR -->
         <!-- <img src="assets/Button White.jpg"/> -->
         <img src="assets/Button PNG.png"/>
       </button>
     </div>
+    <!-- <div style="display: flex; justify-content: center;">
+      <button style="background-color: white; border: none; bottom: 16px; position: absolute;">
+        <img src="assets/Button PNG.png"/>
+      </button>
+    </div> -->
     <img id="snowGIF" style="display: none;" src="assets/snow02.gif"/>
   </model-viewer>
   <script>
