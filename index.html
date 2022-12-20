@@ -1,71 +1,70 @@
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>AR Quick Look Example</title>
-    <script>
-     /* from Apple's AR Quick Look Gallery */
-     (function () {
-       var isRelAR = false;
-       var a = document.createElement('a');
-       if (a.relList.supports('ar')) {
-         isRelAR = true;
-       }
-       document.documentElement.classList.add(isRelAR ? 'relar' : 'no-relar');
-     })();
-    </script>
-    <style>
-     .relar [data-hide-on-relar] {
-       display: none;
-     }
-    </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yogufrut</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
-  </head>
-  <body>
-    <h1>AR Quick Look Example</h1>
-    <p data-hide-on-relar>Visit this page on iOS 12 to try AR Quick Look</p>
-    <a href="https://developer.apple.com/augmented-reality/quick-look/models/nike-air-force/sneaker_airforce.usdz" rel="ar">
-      <img src="assets/Button White.jpg" width="250" height="250">
-      <img src="assets/logo_gif.gif" width="250" height="250">
-    </a>
+  <style>
+    model-viewer {
+      width: 100%;
+      height: 500px;
+      margin: 0 auto;
+      background-color: antiquewhite;
+    }
 
-    <h2>in HTML</h2>
-    <code>img<code> tag in <code>a<code> tag is required.
-    <code>
-      <pre>
-&lt;p data-hide-on-relar&gt;Visit this page on iOS 12 to try AR Quick Look&lt;/p&gt; &lt;!-- This message shoud be hidden by JS and CSS --&gt;
-&lt;a href="path/to/stratocaster.usdz" rel="ar"&gt;
-  &lt;img src="path/to/stratocaster.jpg" width="250" height="250"&gt;
-&lt;/a&gt;
-      </pre>
-    </code>
+    img {
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
 
-    <h2>in JavaScript (How to detect whether the browser has the AR feature or not.)</h2>
-    <code>
-      <pre>
-/* from Apple's AR Quick Look Gallery */
-(function () {
-  var isRelAR = false;
-  var a = document.createElement('a');
-  if (a.relList.supports('ar')) {
-    isRelAR = true;
-  }
-  // to hide caveats by style
-  document.documentElement.classList.add(isRelAR ? 'relar' : 'no-relar');
-})();
-      </pre>
-    </code>
+  <model-viewer id="model-viewer-id" ios-src="assets/models/Yogu Loop And Snow Particles.reality" src="assets/models/Leaf_All_Actions_Merged.glb"
+    ar-modes="webxr quick-look" autoplay camera-controls ar shadow-intensity="1" shadow-softness="1" environment-image="legacy">
+    
+    <div style="display: flex; justify-content: center;">
+      <img id="yoguLogoGIF" style="z-index: 1; width: 200px; height: 74px; position: absolute;" src="assets/logo_gif.gif"/>
+    </div>
+    <img id="snowGIF" style="z-index: 0; display: none; position: absolute; object-fit: cover; height: 100%; width: 100%;" src="assets/snow01.gif"/>
 
-    <h2>in CSS (Hide caveats)</h2>
-    <code>
-      <pre>
-.relar [data-hide-on-relar] {
-  display: none;
-}
-      </pre>
-    </code>
+    <button slot="ar-button" style="background-color: white; border: none; bottom: 16px; position: absolute; margin-left: -50px; left: 50%;">
+      <img src="assets/Button PNG.png"/>
+    </button>
+    
+    <!-- <button style="background-color: white; border: none; bottom: 16px; position: absolute; margin-left: -50px; left: 50%;">
+      <img src="assets/Button PNG.png"/>
+    </button> -->
 
-    <p>More usdz are in <a href="https://developer.apple.com/arkit/gallery/" target="_blank">https://developer.apple.com/arkit/gallery/</a> or <a href="https://www.fusionar.app">https://www.fusionar.app</a>.</p>
-    <p>More resources are in <a href="https://github.com/vfxpro99/usd-resources">https://github.com/vfxpro99/usd-resources</a></p>
+  </model-viewer>
+  <script>
 
-  </body>
+    const modelViewer = document.querySelector('#model-viewer-id');
+    const snowGIF = document.getElementById('snowGIF');
+    let isLoaded = false;
+
+    modelViewer.addEventListener('load', e => {
+      isLoaded = true;
+      console.log("model loaded");
+      console.log(modelViewer.availableAnimations);
+    }, { once: true });
+
+    self.setInterval(() => {
+      if (isLoaded) {
+        console.log(Math.floor(modelViewer.currentTime));
+
+        if (modelViewer.currentTime > 4.3) {
+          snowGIF.style.display = "inline";
+
+          if (modelViewer.currentTime >= 18)
+          modelViewer.currentTime = 9.5;
+        }
+      }
+    }, 50);
+    
+  </script>
+
+</body>
 </html>
