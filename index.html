@@ -54,13 +54,6 @@
       isLoaded = true;
     }, { once: true });
 
-    modelViewer.addEventListener('ar-status', e => {
-      if(event.detail.status === 'object-placed') {
-        // modelViewer.currentTime = 0;
-        // snowGIF.style.display = "none";
-      }
-    });
-
     self.setInterval(() => {
       if (isLoaded) {
         if (modelViewer.currentTime > 4.3) {
