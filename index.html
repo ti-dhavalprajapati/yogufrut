@@ -52,21 +52,17 @@
 
     modelViewer.addEventListener('load', e => {
       isLoaded = true;
-      console.log("model loaded");
-      console.log(modelViewer.availableAnimations);
     }, { once: true });
 
     modelViewer.addEventListener('ar-status', e => {
-      console.log("model placed");
       if(event.detail.status === 'object-placed') {
         modelViewer.currentTime = 0;
+        snowGIF.style.display = "block";
       }
     });
 
     self.setInterval(() => {
       if (isLoaded) {
-        console.log(Math.floor(modelViewer.currentTime));
-
         if (modelViewer.currentTime > 4.3) {
           snowGIF.style.display = "inline";
 
