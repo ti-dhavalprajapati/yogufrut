@@ -30,7 +30,7 @@
     </div>
     <img id="snowGIF" style="z-index: 0; display: none; position: absolute; object-fit: cover; height: 100%; width: 100%;" src="assets/snow01.gif"/>
 
-    <button slot="ar-button" style="background-color: white; border: none; bottom: 16px; position: absolute; margin-left: -65px; left: 50%;">
+    <button slot="ar-button" onclick="ARButtonClick()" style="background-color: white; border: none; bottom: 16px; position: absolute; margin-left: -65px; left: 50%;">
       <img src="assets/Button PNG.png"/>
     </button>
     
@@ -56,8 +56,8 @@
 
     modelViewer.addEventListener('ar-status', e => {
       if(event.detail.status === 'object-placed') {
-        modelViewer.currentTime = 0;
-        snowGIF.style.display = "block";
+        // modelViewer.currentTime = 0;
+        // snowGIF.style.display = "none";
       }
     });
 
@@ -71,6 +71,11 @@
         }
       }
     }, 50);
+
+    function ARButtonClick() {
+      modelViewer.currentTime = 0;
+      snowGIF.style.display = "none";
+    }
     
   </script>
 
