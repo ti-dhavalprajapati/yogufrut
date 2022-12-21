@@ -56,6 +56,13 @@
       console.log(modelViewer.availableAnimations);
     }, { once: true });
 
+    modelViewer.addEventListener('ar-status', e => {
+      console.log("model placed");
+      if(event.detail.status === 'failed') {
+        modelViewer.currentTime = 0;
+      }
+    });
+
     self.setInterval(() => {
       if (isLoaded) {
         console.log(Math.floor(modelViewer.currentTime));
