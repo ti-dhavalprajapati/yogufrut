@@ -58,7 +58,7 @@
 
     modelViewer.addEventListener('ar-status', e => {
       console.log("model placed");
-      if(event.detail.status === 'failed') {
+      if(event.detail.status === 'object-placed') {
         modelViewer.currentTime = 0;
       }
     });
